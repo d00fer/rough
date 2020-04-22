@@ -1,1 +1,1 @@
-# A little roughlike game for Jan
+# A little roguelike game for Jan
