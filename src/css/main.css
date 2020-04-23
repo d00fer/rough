@@ -6,3 +6,8 @@ body {
   text-align: center;
   margin-top: 50px;
 }
+aside {
+  float: right;
+  text-align: center;
+  margin-right: 200px;
+}
