@@ -7,21 +7,27 @@ const setupCanvas = () => {
   canvas.style.width = canvas.width + 'px'
   canvas.style.height = canvas.height + 'px'
 }
-tileSize = 64
-numTiles = 9
-uiWidth = 4
-x = y = 0
+// all needed sizes
+const tileSize = 64
+const numTiles = 9
+const uiWidth = 4
+let x = 0
+let y = 0
+//check for let later ..
+const spriteSheet = new Image()
+spriteSheet.src = 'src/img/monstro.png'
+
 document.querySelector('html').onkeypress = (e) => {
   if (e.key == 'w') y--
   if (e.key == 's') y++
   if (e.key == 'a') x--
   if (e.key == 'd') x++
 }
-
+//draw draw draw
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-  ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize)
+  ctx.drawImage(spriteSheet, x * tileSize, y * tileSize)
 }
-
+//set set set
 setupCanvas()
 setInterval(draw, 15)
