@@ -24,9 +24,22 @@ document.querySelector('html').onkeypress = (e) => {
   if (e.key == 'd') x++
 }
 //draw draw draw
+const drawSprite = (sprite, x, y) => {
+  ctx.drawImage(
+    spriteSheet,
+    sprite * 64,
+    0,
+    64,
+    64,
+    x * tileSize,
+    y * tileSize,
+    tileSize,
+    tileSize,
+  )
+}
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
-  ctx.drawImage(spriteSheet, x * tileSize, y * tileSize)
+  drawSprite(0, x, y)
 }
 //set set set
 setupCanvas()
