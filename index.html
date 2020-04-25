@@ -15,9 +15,27 @@
     <script src="./src/js/spell.js"></script>
     <aside>
       <h1>Zasady</h1>
-      <ul>
-        <li>klawisz W gora, A lewo, D prawo, S dol</li>
-      </ul>
+      <p>klawisz W gora, A lewo, D prawo, S dol</p>
     </aside>
+    <script>
+      // all needed sizes
+      const tileSize = 64
+      const numTiles = 9
+      const uiWidth = 4
+      let x = 0
+      let y = 0
+      //check for let later ..
+      const spriteSheet = new Image()
+      spriteSheet.src = 'src/img/spritesheet.png'
+      document.querySelector('html').onkeypress = (e) => {
+        if (e.key == 'w') y--
+        if (e.key == 's') y++
+        if (e.key == 'a') x--
+        if (e.key == 'd') x++
+      }
+      setInterval(draw, 15)
+      setupCanvas()
+      generateLevel()
+    </script>
   </body>
 </html>

@@ -1,13 +1,13 @@
-canvas {
-  outline: 1px solid white;
+#game {
+  outline: 4px solid white;
 }
 body {
-  background-color: indigo;
+  background-color: Grey;
   text-align: center;
   margin-top: 50px;
 }
 aside {
   float: right;
-  text-align: center;
-  margin-right: 200px;
+  margin: 0 1.5%;
+  width: 20%;
 }

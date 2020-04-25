@@ -6,31 +6,16 @@ const setupCanvas = () => {
   canvas.height = tileSize * numTiles
   canvas.style.width = canvas.width + 'px'
   canvas.style.height = canvas.height + 'px'
-}
-// all needed sizes
-const tileSize = 64
-const numTiles = 9
-const uiWidth = 4
-let x = 0
-let y = 0
-//check for let later ..
-const spriteSheet = new Image()
-spriteSheet.src = 'src/img/monstro.png'
-
-document.querySelector('html').onkeypress = (e) => {
-  if (e.key == 'w') y--
-  if (e.key == 's') y++
-  if (e.key == 'a') x--
-  if (e.key == 'd') x++
+  ctx.imageSmoothingEnabled = false
 }
 //draw draw draw
 const drawSprite = (sprite, x, y) => {
   ctx.drawImage(
     spriteSheet,
-    sprite * 64,
+    sprite * 16,
     0,
-    64,
-    64,
+    16,
+    16,
     x * tileSize,
     y * tileSize,
     tileSize,
@@ -39,8 +24,10 @@ const drawSprite = (sprite, x, y) => {
 }
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  for (let i = 0; i < numTiles; i++) {
+    for (let j = 0; j < numTiles; j++) {
+      getTile(i, j).draw()
+    }
+  }
   drawSprite(0, x, y)
 }
-//set set set
-setupCanvas()
-setInterval(draw, 15)
