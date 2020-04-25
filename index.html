@@ -23,25 +23,45 @@
       <img src="/src/img/cyferki.png" />
     </aside>
     <script>
-      // all needed sizes
-      const tileSize = 64
-      const numTiles = 9
-      const uiWidth = 4
-      let x = 0
-      let y = 0
-      //check for let later ..
-      const spriteSheet = new Image()
-      spriteSheet.src = 'src/img/spritesheet.png'
-      //arrow keys only working wit onkeydown not on keypress
-      document.querySelector('html').onkeydown = (e) => {
-        if (e.key == 'ArrowUp') y--
-        if (e.key == 'ArrowDown') y++
-        if (e.key == 'ArrowLeft') x--
-        if (e.key == 'ArrowRight') x++
+      tileSize = 64
+      numTiles = 9
+      uiWidth = 4
+      level = 1
+      maxHp = 6
+
+      spritesheet = new Image()
+      spritesheet.src = '/src/img/spritesheet.png'
+      spritesheet.onload = showTitle
+
+      gameState = 'loading'
+
+      startingHp = 3
+      numLevels = 6
+
+      shakeAmount = 0
+      shakeX = 0
+      shakeY = 0
+
+      document.querySelector('html').onkeydown = function (e) {
+        if (gameState == 'title') {
+          startGame()
+        } else if (gameState == 'dead') {
+          showTitle()
+        } else if (gameState == 'running') {
+          if (e.key == 'ArrowUp') player.tryMove(0, -1)
+          if (e.key == 'ArrowDown') player.tryMove(0, 1)
+          if (e.key == 'ArrowLeft') player.tryMove(-1, 0)
+          if (e.key == 'ArrowRight') player.tryMove(1, 0)
+
+          if (e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1)
+        }
       }
+
       setInterval(draw, 15)
+
       setupCanvas()
-      generateLevel()
+
+      initSounds()
     </script>
   </body>
 </html>
