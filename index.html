@@ -27,11 +27,12 @@
       //check for let later ..
       const spriteSheet = new Image()
       spriteSheet.src = 'src/img/spritesheet.png'
-      document.querySelector('html').onkeypress = (e) => {
-        if (e.key == 'w') y--
-        if (e.key == 's') y++
-        if (e.key == 'a') x--
-        if (e.key == 'd') x++
+      //arrow keys only working wit onkeydown not on keypress
+      document.querySelector('html').onkeydown = (e) => {
+        if (e.key == 'ArrowUp') y--
+        if (e.key == 'ArrowDown') y++
+        if (e.key == 'ArrowLeft') x--
+        if (e.key == 'ArrowRight') x++
       }
       setInterval(draw, 15)
       setupCanvas()
