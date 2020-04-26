@@ -2,25 +2,25 @@
 <html>
   <head>
     <title>rough</title>
-    <link href="/src/css/main.css" rel="stylesheet" />
+    <link href="src/css/main.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <canvas id="game"></canvas>
-    <script src="/src/js/game.js"></script>
-    <script src="/src/js/map.js"></script>
-    <script src="/src/js/tile.js"></script>
-    <script src="/src/js/monster.js"></script>
-    <script src="/src/js/util.js"></script>
-    <script src="/src/js/spell.js"></script>
+    <script src="src/js/game.js"></script>
+    <script src="src/js/map.js"></script>
+    <script src="src/js/tile.js"></script>
+    <script src="src/js/monster.js"></script>
+    <script src="src/js/util.js"></script>
+    <script src="src/js/spell.js"></script>
     <aside>
       <h1>Zasady</h1>
       <p>
         Takze tak Janie by sie ruszyc uzyj strzalek gora dol lewo prawo
       </p>
-      <img src="/src/img/strzalki.png" />
+      <img src="src/img/strzalki.png" />
       <p>A cyferki numerki sluza do rzucania zaklec</p>
-      <img src="/src/img/cyferki.png" />
+      <img src="src/img/cyferki.png" />
     </aside>
     <script>
       tileSize = 64
@@ -30,7 +30,7 @@
       maxHp = 6
 
       spritesheet = new Image()
-      spritesheet.src = '/src/img/spritesheet.png'
+      spritesheet.src = 'src/img/spritesheet.png'
       spritesheet.onload = showTitle
 
       gameState = 'loading'
