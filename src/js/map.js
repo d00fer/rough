@@ -1,7 +1,7 @@
 function generateLevel() {
- chujk utryTo('generate map', function() {
-  return generateTiles() == randomPassableTile().getConnectedTiles().length
-})
+  tryTo('generate map', function () {
+    return generateTiles() == randomPassableTile().getConnectedTiles().length
+  })
 
   generateMonsters()
 
@@ -41,7 +41,7 @@ function getTile(x, y) {
 
 function randomPassableTile() {
   let tile
-  tryTo('get random passable tile', function() {
+  tryTo('get random passable tile', function () {
     let x = randomRange(0, numTiles - 1)
     let y = randomRange(0, numTiles - 1)
     tile = getTile(x, y)
