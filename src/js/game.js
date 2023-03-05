@@ -82,6 +82,7 @@ function showTitle() {
   gameState = 'title'
 
   drawText('rough', 40, true, canvas.height / 2 - 110, 'white')
+  drawText('', 40, true, canvas.height / 2 - 110, 'white')
 
   drawScores()
 }
