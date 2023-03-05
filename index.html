@@ -1,70 +1,60 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>rough</title>
+    <link href="src/css/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-<head>
-  <title>rough</title>
-  <link href="src/css/main.css" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
+  <body>
+    <canvas id="game"></canvas>
+    <script src="src/js/game.js"></script>
+    <script src="src/js/map.js"></script>
+    <script src="src/js/tile.js"></script>
+    <script src="src/js/monster.js"></script>
+    <script src="src/js/util.js"></script>
+    <script src="src/js/spell.js"></script>
+    <aside></aside>
+    <script>
+      tileSize = 64
+      numTiles = 9
+      uiWidth = 4
+      level = 1
+      maxHp = 6
 
-<body>
-  <canvas id="game"></canvas>
-  <script src="src/js/game.js"></script>
-  <script src="src/js/map.js"></script>
-  <script src="src/js/tile.js"></script>
-  <script src="src/js/monster.js"></script>
-  <script src="src/js/util.js"></script>
-  <script src="src/js/spell.js"></script>
-  <aside>
-    <h1>Zasady</h1>
-    <p>By sie ruszyc uzyj strzalek gora dol lewo prawo</p>
-    <img src="src/img/strzalki.png" />
-    <p>A cyferki numerki sluza do rzucania zaklec</p>
-    <img src="src/img/cyferki.png" />
-    <p>Szukaj Portalu chyba nie musze pisac jak wyglada</p>
-    <p>Aha i diaksy zbieraj diaksy</p>
-  </aside>
-  <script>
-    tileSize = 64
-    numTiles = 9
-    uiWidth = 4
-    level = 1
-    maxHp = 6
+      spritesheet = new Image()
+      spritesheet.src = 'src/img/spritesheet.png'
+      spritesheet.onload = showTitle
 
-    spritesheet = new Image()
-    spritesheet.src = 'src/img/spritesheet.png'
-    spritesheet.onload = showTitle
+      gameState = 'loading'
 
-    gameState = 'loading'
+      startingHp = 3
+      numLevels = 6
 
-    startingHp = 3
-    numLevels = 6
+      shakeAmount = 0
+      shakeX = 0
+      shakeY = 0
 
-    shakeAmount = 0
-    shakeX = 0
-    shakeY = 0
+      document.querySelector('html').onkeydown = function (e) {
+        if (gameState == 'title') {
+          startGame()
+        } else if (gameState == 'dead') {
+          showTitle()
+        } else if (gameState == 'running') {
+          if (e.key == 'ArrowUp') player.tryMove(0, -1)
+          if (e.key == 'ArrowDown') player.tryMove(0, 1)
+          if (e.key == 'ArrowLeft') player.tryMove(-1, 0)
+          if (e.key == 'ArrowRight') player.tryMove(1, 0)
 
-    document.querySelector('html').onkeydown = function (e) {
-      if (gameState == 'title') {
-        startGame()
-      } else if (gameState == 'dead') {
-        showTitle()
-      } else if (gameState == 'running') {
-        if (e.key == 'ArrowUp') player.tryMove(0, -1)
-        if (e.key == 'ArrowDown') player.tryMove(0, 1)
-        if (e.key == 'ArrowLeft') player.tryMove(-1, 0)
-        if (e.key == 'ArrowRight') player.tryMove(1, 0)
-
-        if (e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1)
+          if (e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1)
+        }
       }
-    }
 
-    setInterval(draw, 15)
+      setInterval(draw, 15)
 
-    setupCanvas()
+      setupCanvas()
 
-    initSounds()
-  </script>
-</body>
-
+      initSounds()
+    </script>
+  </body>
 </html>
