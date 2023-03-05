@@ -19,7 +19,7 @@ function drawSprite(sprite, x, y) {
     x * tileSize + shakeX,
     y * tileSize + shakeY,
     tileSize,
-    tileSize,
+    tileSize
   )
 }
 
@@ -134,7 +134,7 @@ function getScores() {
 
 function addScore(score, won) {
   let scores = getScores()
-  let scoreObject = {score: score, run: 1, totalScore: score, active: won}
+  let scoreObject = { score: score, run: 1, totalScore: score, active: won }
   let lastScore = scores.pop()
 
   if (lastScore) {
@@ -158,7 +158,7 @@ function drawScores() {
       18,
       true,
       canvas.height / 2,
-      'white',
+      'white'
     )
 
     let newestScore = scores.pop()
@@ -178,7 +178,7 @@ function drawScores() {
         18,
         true,
         canvas.height / 2 + 24 + i * 24,
-        i == 0 ? 'aqua' : 'violet',
+        i == 0 ? 'aqua' : 'violet'
       )
     }
   }
