@@ -1,5 +1,4 @@
-# A little roguelike game for Jan
-
+# A little roguelike game 
 rough it's 2d game base on genre created by Michael Brough
 
 - Small grit
